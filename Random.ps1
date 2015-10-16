@@ -22,6 +22,7 @@ Function get-dir2dac {
 }
 
 Function extract-zip ($sourceFile, $outputFolder) {
+
     if(!(Test-Path -Path $outputFolder)){
         Add-Type -assembly "system.io.compression.filesystem"
 
@@ -75,8 +76,11 @@ Function build-dacpacs (){
 #get-code
 get-downloads
 
-#get-dir2dac
+get-dir2dac
 
-#extract-zip (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac.zip", (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac"
+$sourceFile = (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac.zip"
+$outputDir = (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac"
+
+extract-zip $sourceFile $outputDir
 
 build-dacpacs 

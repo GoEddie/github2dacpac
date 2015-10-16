@@ -70,8 +70,11 @@ Function build-dacpacs (){
 
 get-code
 
-#get-dir2dac
+get-dir2dac
 
-#extract-zip (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac.zip", (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac"
+$sourceFile = (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac.zip"
+$outputDir = (Get-Item -Path ".\" -Verbose).FullName + "\bin\dir2dac"
+
+extract-zip $sourceFile $outputDir
 
 build-dacpacs 
